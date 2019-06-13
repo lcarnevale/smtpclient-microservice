@@ -1,4 +1,11 @@
-username: ""
-password: ""
+# Copyright: Copyright 2019, University of Messina
+# Author: Lorenzo Carnevale
+# Email: lorenzocarnevale@gmail.com
 
-sent_from: ""
+# Please, take your time to update the
+# following data
+
+username: YOUR_GMAIL_ACCOUNT
+password: YOUR_APPLICATION_PASSWORD
+
+sent_from: SENDER_MAIL_ADDRESS
