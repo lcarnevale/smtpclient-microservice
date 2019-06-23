@@ -17,19 +17,20 @@ sent_from: SENDER_MAIL_ADDRESS
 
 Build an image using the Dockerfile:
 ```bash
-$ docker build -t smtpclient-microservice .
+$ docker build -t lcarnevale/smtpclient-microservice .
 ```
 
 Run the image, exposing the dev port:
 ```bash
-$ docker run -d -p 5000:5000 --name smtpclient-microservice smtpclient-microservice
+$ docker run -d -p 5000:5000 --name smtpclient-microservice lcarnevale/smtpclient-microservice
 ```
 
 Try to send a mail out with a curl:
 ```bash
-$ curl -d '{"to":["RECIPIENT_MAIL_ADDRE"], \
+$ curl -d '{ \
+  "to":["RECIPIENT_MAIL_ADDRESS"], \
   "subject":"Test SMTP Client Microservice", \
-  "body":"This mail is sent out by the SMTP Client Microservice\n\nLorenzo" \
+  "body":"This mail is sent out by the SMTP Client Microservice.\n\nLorenzo" \
 }' \
 -H "Content-Type: application/json" \
 -X POST http://localhost:5000/
