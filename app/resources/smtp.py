@@ -10,6 +10,8 @@ __author__ = 'Lorenzo Carnevale <lorenzocarnevale@gmail.com>'
 # standard libraries
 import yaml
 import smtplib
+# local libraries
+from common.mimeemail import mime_email
 # third parties libraries
 from flask import request
 from flask_restful import Resource
@@ -46,16 +48,16 @@ class SMTPGmailClient(Resource):
         subject = json_data["subject"]
         body = json_data["body"]
 
-        return sent_from, to, body
+        return sent_from, to, subject, body
 
     def post(self):
         """ HTTP POST request to send a mail
         """
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-        # server.ehlo()
         server.login(self.__username, self.__password)
 
-        sent_from, to, email_text = self.__create_email()
-        server.sendmail(sent_from, to, email_text)
+        sent_from, to, subject, email_text = self.__create_email()
+        msg = mime_email(sent_from, to, subject, email_text)
 
+        server.send_message(msg)
         server.close()
