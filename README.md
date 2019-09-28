@@ -5,8 +5,9 @@ A Python Flask implementation of a SMTP Client Microservice. It uses Gmail to se
 
 This project is part of the scientific research made up at [University of Messina](https://www.unime.it/en) and it aims to be a research product.
 
-## How to run it
+## Microservice
 
+### How to run it
 Modify the configuration file first
 ```yaml
 username: YOUR_GMAIL_ACCOUNT
@@ -22,9 +23,10 @@ $ docker build -t lcarnevale/smtpclient-microservice .
 
 Run the image, exposing the dev port:
 ```bash
-$ docker run -d -p 5000:5000 --name smtpclient-microservice lcarnevale/smtpclient-microservice
+$ docker run -d --rm -p 5000:5000 --name smtpclient-microservice lcarnevale/smtpclient-microservice
 ```
 
+### How to use it
 Try to send a mail out with a curl:
 ```bash
 $ curl -d '{ \
