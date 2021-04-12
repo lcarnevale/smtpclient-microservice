@@ -1,10 +1,9 @@
 """ SMTP Client Resources Collection
-
 .. _Google Python Style Guide
     https://github.com/google/styleguide/blob/gh-pages/pyguide.md
 """
 
-__copyright__ = 'Copyright 2019, University of Messina'
+__copyright__ = 'Copyright 2019-2020, University of Messina'
 __author__ = 'Lorenzo Carnevale <lorenzocarnevale@gmail.com>'
 
 # standard libraries
@@ -54,6 +53,7 @@ class SMTPGmailClient(Resource):
         """ HTTP POST request to send a mail
         """
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        
         server.login(self.__username, self.__password)
 
         sent_from, to, subject, email_text = self.__create_email()
